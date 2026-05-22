@@ -950,9 +950,190 @@
   color: #ff5e5b;
 }
 
+.credits-link--github:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--text-primary);
+}
+
 .credits-footer__copy {
   font-size: var(--text-xs);
   color: var(--text-muted);
   margin-top: var(--space-4);
+}
+
+/* ── Launch Countdown ── */
+.launch-countdown {
+  position: relative;
+  margin: var(--space-20) 0 0;
+  padding: var(--space-12) var(--space-6);
+  overflow: hidden;
+}
+
+.launch-countdown::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(196, 147, 58, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 50%, rgba(196, 147, 58, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.launch-countdown::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--accent-primary), transparent);
+  opacity: 0.4;
+}
+
+.launch-countdown__inner {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.launch-countdown__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.launch-countdown__badge {
+  display: inline-block;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  background: var(--accent-glow-strong);
+  border: 1px solid var(--border-accent);
+  padding: 3px 12px;
+  border-radius: var(--radius-full);
+  animation: subtlePulse 3s ease-in-out infinite;
+}
+
+.launch-countdown__title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-xl), 3vw, var(--text-3xl));
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+
+.launch-countdown__accent {
+  color: var(--accent-primary);
+}
+
+.launch-countdown__subtitle {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Timer digits */
+.launch-countdown__timer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.countdown-value {
+  font-family: var(--font-mono);
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  min-width: 4.5ch;
+  text-align: center;
+  line-height: 1;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04);
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.countdown-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.countdown-sep {
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--accent-primary);
+  line-height: 1;
+  margin-bottom: var(--space-5); /* align with digits, not labels */
+  animation: countdownBlink 1s step-end infinite;
+}
+
+@keyframes countdownBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Highlights when a digit is ticking */
+.countdown-value.tick {
+  color: var(--accent-primary);
+  border-color: var(--border-accent);
+}
+
+/* Local time note */
+.launch-countdown__localtime {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.launch-countdown__localtime strong {
+  color: var(--text-secondary);
+}
+
+/* Launched state */
+.launch-countdown--launched .countdown-value {
+  color: var(--color-buff);
+  border-color: var(--color-buff-border);
+}
+
+.launch-countdown--launched .launch-countdown__badge {
+  background: var(--color-buff-bg);
+  border-color: var(--color-buff-border);
+  color: var(--color-buff);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .launch-countdown__timer {
+    gap: var(--space-2);
+  }
+  .countdown-value {
+    padding: var(--space-2) var(--space-3);
+    min-width: 3.5ch;
+  }
 }
 

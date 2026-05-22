@@ -78,6 +78,9 @@ function init() {
     els.urlInput.value = urlParam;
     handleFetchClick();
   }
+
+  // Launch countdown
+  initCountdown();
 }
 
 function handleInputPaste(e) {
@@ -345,4 +348,82 @@ function animateValue(obj, end, duration = 600) {
     }
   };
   window.requestAnimationFrame(step);
+}
+
+// ── Launch Countdown ──
+// Target: May 29 2026 at 1:00 PM PDT = 20:00 UTC
+const LAUNCH_UTC = Date.UTC(2026, 4, 29, 20, 0, 0); // month is 0-indexed
+
+function initCountdown() {
+  const section    = document.getElementById('launch-countdown');
+  const localTimeEl = document.getElementById('cd-local-time');
+  const cdDays     = document.getElementById('cd-days');
+  const cdHours    = document.getElementById('cd-hours');
+  const cdMinutes  = document.getElementById('cd-minutes');
+  const cdSeconds  = document.getElementById('cd-seconds');
+
+  if (!section) return;
+
+  // Show the launch time in device local timezone
+  const launchDate = new Date(LAUNCH_UTC);
+  const localStr   = launchDate.toLocaleString(undefined, {
+    weekday: 'long',
+    year:    'numeric',
+    month:   'long',
+    day:     'numeric',
+    hour:    'numeric',
+    minute:  '2-digit',
+    timeZoneName: 'short'
+  });
+  localTimeEl.innerHTML = `Launches <strong>${localStr}</strong> <span style="opacity:0.6">(your local time)</span>`;
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function flashTick(el) {
+    el.classList.remove('tick');
+    // Force reflow so the class re-triggers
+    void el.offsetWidth;
+    el.classList.add('tick');
+    setTimeout(() => el.classList.remove('tick'), 150);
+  }
+
+  let prevSeconds = -1;
+
+  function tick() {
+    const now  = Date.now();
+    const diff = LAUNCH_UTC - now;
+
+    if (diff <= 0) {
+      // Already launched!
+      section.classList.add('launch-countdown--launched');
+      cdDays.textContent    = '00';
+      cdHours.textContent   = '00';
+      cdMinutes.textContent = '00';
+      cdSeconds.textContent = '00';
+      document.querySelector('.launch-countdown__badge').textContent = 'Launched!';
+      document.querySelector('.launch-countdown__subtitle').textContent = 'Update 0.5 is live — go play!';
+      localTimeEl.textContent = '';
+      return; // stop ticking
+    }
+
+    const totalSecs = Math.floor(diff / 1000);
+    const days      = Math.floor(totalSecs / 86400);
+    const hours     = Math.floor((totalSecs % 86400) / 3600);
+    const minutes   = Math.floor((totalSecs % 3600) / 60);
+    const seconds   = totalSecs % 60;
+
+    if (seconds !== prevSeconds) {
+      if (prevSeconds !== -1) flashTick(cdSeconds);
+      cdSeconds.textContent = pad(seconds);
+      prevSeconds = seconds;
+    }
+
+    cdDays.textContent    = pad(days);
+    cdHours.textContent   = pad(hours);
+    cdMinutes.textContent = pad(minutes);
+
+    setTimeout(tick, 1000 - (Date.now() % 1000)); // sync to wall clock
+  }
+
+  tick();
 }
