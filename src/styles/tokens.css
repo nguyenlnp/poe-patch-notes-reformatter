@@ -1,0 +1,112 @@
+/* ============================================
+   DESIGN TOKENS — "Wraeclast Dark" Theme
+   ============================================ */
+
+:root {
+  /* ── Backgrounds — layered depth, never pure black ── */
+  --bg-abyss:       #0a0c10;
+  --bg-surface:     #12151c;
+  --bg-elevated:    #1a1e28;
+  --bg-hover:       #222736;
+  --bg-active:      #2a3040;
+
+  /* ── Text hierarchy ── */
+  --text-primary:   #e8e4dc;
+  --text-secondary: #9a9488;
+  --text-muted:     #5e584e;
+  --text-inverse:   #0a0c10;
+
+  /* ── Semantic: Buff / Nerf / Status ── */
+  --color-buff:     #729e39;
+  --color-buff-bg:  rgba(114, 158, 57, 0.08);
+  --color-buff-border: rgba(114, 158, 57, 0.25);
+
+  --color-nerf:     #c0392b;
+  --color-nerf-bg:  rgba(192, 57, 43, 0.08);
+  --color-nerf-border: rgba(192, 57, 43, 0.25);
+
+  --color-new:      #d4a843;
+  --color-new-bg:   rgba(212, 168, 67, 0.08);
+  --color-new-border: rgba(212, 168, 67, 0.25);
+
+  --color-fix:      #7c8ea0;
+  --color-fix-bg:   rgba(124, 142, 160, 0.06);
+  --color-fix-border: rgba(124, 142, 160, 0.2);
+
+  --color-rework:   #b07cd8;
+  --color-rework-bg: rgba(176, 124, 216, 0.08);
+  --color-rework-border: rgba(176, 124, 216, 0.25);
+
+  --color-neutral-border: rgba(255, 255, 255, 0.06);
+
+  /* ── Accent ── */
+  --accent-primary:   #c4933a;
+  --accent-secondary: #8b6914;
+  --accent-glow:      rgba(196, 147, 58, 0.15);
+  --accent-glow-strong: rgba(196, 147, 58, 0.3);
+
+  /* ── Borders ── */
+  --border-subtle:    rgba(255, 255, 255, 0.06);
+  --border-default:   rgba(255, 255, 255, 0.10);
+  --border-strong:    rgba(255, 255, 255, 0.18);
+  --border-accent:    rgba(196, 147, 58, 0.30);
+
+  /* ── Glass ── */
+  --glass-bg:         rgba(18, 21, 28, 0.85);
+  --glass-bg-heavy:   rgba(10, 12, 16, 0.92);
+  --glass-blur:       12px;
+
+  /* ── Typography ── */
+  --font-display:   'Cinzel', 'Palatino Linotype', 'Book Antiqua', serif;
+  --font-body:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:      'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+
+  --text-xs:   0.75rem;     /* 12px */
+  --text-sm:   0.8125rem;   /* 13px */
+  --text-base: 0.9375rem;   /* 15px */
+  --text-md:   1rem;        /* 16px */
+  --text-lg:   1.125rem;    /* 18px */
+  --text-xl:   1.375rem;    /* 22px */
+  --text-2xl:  1.75rem;     /* 28px */
+  --text-3xl:  2.25rem;     /* 36px */
+
+  /* ── Spacing — multiples of 6 ── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* ── Radii ── */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm:  0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md:  0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg:  0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px var(--accent-glow);
+
+  /* ── Animation ── */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:    cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast:   150ms;
+  --duration-normal: 250ms;
+  --duration-slow:   400ms;
+  --duration-slower:  600ms;
+
+  /* ── Layout ── */
+  --content-max-width: 1200px;
+  --toc-width: 240px;
+  --nav-height: 52px;
+}

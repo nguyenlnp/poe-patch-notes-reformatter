@@ -1,0 +1,114 @@
+/* ============================================
+   LAYOUT — Grid, Responsive, Structure
+   ============================================ */
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  background-color: var(--bg-abyss);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ── Ambient background ── */
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.35;
+}
+
+.ambient-orb--1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(196, 147, 58, 0.12) 0%, transparent 70%);
+  top: -100px;
+  right: -100px;
+  animation: orbFloat1 25s ease-in-out infinite;
+}
+
+.ambient-orb--2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(176, 124, 216, 0.06) 0%, transparent 70%);
+  bottom: 20%;
+  left: -80px;
+  animation: orbFloat2 30s ease-in-out infinite;
+}
+
+.ambient-orb--3 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(114, 158, 57, 0.06) 0%, transparent 70%);
+  top: 50%;
+  right: 10%;
+  animation: orbFloat3 20s ease-in-out infinite;
+}
+
+/* ── Main layout ── */
+.main-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: var(--toc-width) 1fr;
+  gap: var(--space-8);
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-6) var(--space-20);
+}
+
+/* ── Table of Contents sidebar ── */
+.toc {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-6));
+  height: fit-content;
+  max-height: calc(100vh - var(--nav-height) - var(--space-12));
+  overflow-y: auto;
+  padding-right: var(--space-4);
+}
+
+/* ── Changelog content area ── */
+.changelog {
+  min-width: 0; /* prevent grid blowout */
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+    padding: var(--space-4);
+  }
+
+  .toc {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --text-base: 0.875rem;
+    --text-lg: 1rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+  }
+
+  .main-layout {
+    padding: var(--space-3);
+  }
+}
+
+@media (max-width: 480px) {
+  .main-layout {
+    padding: var(--space-2);
+  }
+}

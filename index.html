@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PoE2 Patch Notes — Reformatted</title>
+  <meta name="description" content="Transform Path of Exile 2 patch notes into a beautifully formatted, Dota 2-inspired reading experience with color-coded buffs, nerfs, and section navigation.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles/reset.css">
+  <link rel="stylesheet" href="/src/styles/tokens.css">
+  <link rel="stylesheet" href="/src/styles/animations.css">
+  <link rel="stylesheet" href="/src/styles/layout.css">
+  <link rel="stylesheet" href="/src/styles/components.css">
+</head>
+<body>
+  <!-- Ambient background effects -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="ambient-orb ambient-orb--1"></div>
+    <div class="ambient-orb ambient-orb--2"></div>
+    <div class="ambient-orb ambient-orb--3"></div>
+  </div>
+
+  <!-- Hero Header -->
+  <header class="hero" id="hero-header">
+    <div class="hero__backdrop" aria-hidden="true"></div>
+    <div class="hero__content">
+      <div class="hero__brand">
+        <svg class="hero__icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M10 8h3l7 12-7 12h-3l7-12-7-12z" fill="currentColor" opacity="0.6"/>
+          <path d="M20 8h3l7 12-7 12h-3l7-12-7-12z" fill="currentColor"/>
+        </svg>
+        <h1 class="hero__title">Patch Notes<span class="hero__title-accent">Reformatted</span></h1>
+      </div>
+      <p class="hero__subtitle">Transform Path of Exile 2 patch notes into a readable, Dota 2-inspired experience</p>
+      
+      <!-- URL Input -->
+      <div class="input-group" id="input-group">
+        <div class="input-wrapper">
+          <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+          </svg>
+          <input 
+            type="url" 
+            id="changelog-url" 
+            class="input-field"
+            placeholder="Paste a PoE forum thread URL or paste raw patch notes..."
+            autocomplete="off"
+            spellcheck="false"
+          >
+          <button id="fetch-btn" class="input-btn" type="button" aria-label="Fetch and format changelog">
+            <svg class="input-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="13 17 18 12 13 7"/>
+              <polyline points="6 17 11 12 6 7"/>
+            </svg>
+            <span class="input-btn-text">Convert</span>
+          </button>
+        </div>
+        <div class="input-hint" id="input-hint">
+          Accepts: <code>pathofexile.com/forum/view-thread/...</code> or paste raw text
+        </div>
+        <div class="input-error" id="input-error" role="alert" hidden></div>
+      </div>
+
+      <!-- Loading skeleton -->
+      <div class="loading-indicator" id="loading-indicator" hidden>
+        <div class="loading-bar">
+          <div class="loading-bar__fill"></div>
+        </div>
+        <p class="loading-text" id="loading-text">Fetching patch notes from Wraeclast...</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar" id="stats-bar" hidden>
+    <div class="stats-bar__inner">
+      <button class="stat stat--clickable" id="stat-total" data-filter="all" title="Show all changes">
+        <span class="stat__value" data-count="0">0</span>
+        <span class="stat__label">Total Changes</span>
+      </button>
+      <button class="stat stat--buff stat--clickable" id="stat-buffs" data-filter="buff" title="Filter: Buffs only">
+        <svg class="stat__icon" viewBox="0 0 16 16"><polygon points="8,2 14,10 2,10"/></svg>
+        <span class="stat__value" data-count="0">0</span>
+        <span class="stat__label">Buffs</span>
+      </button>
+      <button class="stat stat--nerf stat--clickable" id="stat-nerfs" data-filter="nerf" title="Filter: Nerfs only">
+        <svg class="stat__icon" viewBox="0 0 16 16"><polygon points="8,14 14,6 2,6"/></svg>
+        <span class="stat__value" data-count="0">0</span>
+        <span class="stat__label">Nerfs</span>
+      </button>
+      <button class="stat stat--fix stat--clickable" id="stat-fixes" data-filter="fix" title="Filter: Fixes only">
+        <svg class="stat__icon" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        <span class="stat__value" data-count="0">0</span>
+        <span class="stat__label">Fixes</span>
+      </button>
+      <button class="stat stat--new stat--clickable" id="stat-new" data-filter="new" title="Filter: New content only">
+        <svg class="stat__icon" viewBox="0 0 16 16"><polygon points="8,1 10,6 15,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 1,6 6,6"/></svg>
+        <span class="stat__value" data-count="0">0</span>
+        <span class="stat__label">New</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Section Navigation (sticky) -->
+  <nav class="section-nav" id="section-nav" hidden>
+    <div class="section-nav__inner" id="section-nav-pills">
+      <!-- Pills populated by JS -->
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main class="main-layout" id="main-content" hidden>
+    <!-- Table of Contents Sidebar -->
+    <aside class="toc" id="toc-sidebar">
+      <div class="toc__header">
+        <svg class="toc__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/>
+        </svg>
+        <span>Contents</span>
+      </div>
+      <ul class="toc__list" id="toc-list">
+        <!-- Populated by JS -->
+      </ul>
+    </aside>
+
+    <!-- Changelog Content -->
+    <div class="changelog" id="changelog-content">
+      <!-- Sections rendered by JS -->
+    </div>
+  </main>
+
+  <!-- Empty State (shown on first load) -->
+  <div class="empty-state" id="empty-state">
+    <div class="empty-state__art" aria-hidden="true">
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="80" stroke="var(--accent-primary)" stroke-width="0.5" opacity="0.2"/>
+        <circle cx="100" cy="100" r="60" stroke="var(--accent-primary)" stroke-width="0.5" opacity="0.15"/>
+        <circle cx="100" cy="100" r="40" stroke="var(--accent-primary)" stroke-width="0.5" opacity="0.1"/>
+        <path d="M80 85h8l12 15-12 15h-8l12-15-12-15z" fill="var(--accent-primary)" opacity="0.4"/>
+        <path d="M100 85h8l12 15-12 15h-8l12-15-12-15z" fill="var(--accent-primary)" opacity="0.6"/>
+      </svg>
+    </div>
+    <h2 class="empty-state__title">Ready to reformat</h2>
+    <p class="empty-state__text">Paste a Path of Exile forum thread URL above to transform patch notes into a structured, color-coded reading experience.</p>
+    <div class="empty-state__examples">
+      <p class="empty-state__examples-label">Try these:</p>
+      <button class="example-link" data-url="https://www.pathofexile.com/forum/view-thread/3924293" type="button">
+        3.28.0e Patch Notes
+      </button>
+      <button class="example-link" data-url="https://www.pathofexile.com/forum/view-thread/3928888" type="button">
+        3.28.0g Patch Notes
+      </button>
+      <button class="example-link" data-url="https://www.pathofexile.com/forum/view-thread/3930450" type="button">
+        3.28.0h Patch Notes
+      </button>
+    </div>
+  </div>
+
+  <!-- Contact / Credits Footer -->
+  <footer class="credits-footer" id="credits-footer">
+    <div class="credits-footer__inner">
+      <div class="credits-footer__brand">
+        <svg class="credits-footer__icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M10 8h3l7 12-7 12h-3l7-12-7-12z" fill="currentColor" opacity="0.6"/>
+          <path d="M20 8h3l7 12-7 12h-3l7-12-7-12z" fill="currentColor"/>
+        </svg>
+        <span class="credits-footer__name">Patch Notes Reformatted</span>
+      </div>
+      <p class="credits-footer__tagline">Made with ❤️ for the Path of Exile community</p>
+      <div class="credits-footer__links">
+        <a href="mailto:contact@nguyenlnp.com" class="credits-link credits-link--email" aria-label="Send email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <polyline points="2,4 12,13 22,4"/>
+          </svg>
+          <span>contact@nguyenlnp.com</span>
+        </a>
+        <a href="https://ai.nguyenlnp.com" target="_blank" rel="noopener noreferrer" class="credits-link credits-link--website" aria-label="Visit website">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <span>ai.nguyenlnp.com</span>
+        </a>
+        <a href="https://ko-fi.com/nguyenlnp" target="_blank" rel="noopener noreferrer" class="credits-link credits-link--kofi" aria-label="Support on Ko-fi">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.709-.965-1.041-2.7-.091-3.71.951-1.01 3.005-1.086 4.363.407 0 0 1.565-1.782 3.468-.963 1.904.82 1.832 3.011.723 4.311zm6.173.478c-.928.116-1.682.028-1.682.028V7.284h1.77s1.971.551 1.971 2.638c0 1.913-.985 2.667-2.059 3.015z"/>
+          </svg>
+          <span>Support on Ko-fi</span>
+        </a>
+      </div>
+      <p class="credits-footer__copy">&copy; 2025 Nguyen LNP · Built for exiles, by an exile</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top" id="scroll-top-btn" type="button" aria-label="Scroll to top" hidden>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
+
+  <!-- Text paste modal -->
+  <dialog class="paste-modal" id="paste-modal">
+    <div class="paste-modal__content">
+      <h2 class="paste-modal__title">Paste Raw Patch Notes</h2>
+      <textarea id="paste-textarea" class="paste-textarea" placeholder="Paste the full patch notes text here..." rows="20"></textarea>
+      <div class="paste-modal__actions">
+        <button id="paste-cancel" class="btn btn--ghost" type="button">Cancel</button>
+        <button id="paste-submit" class="btn btn--primary" type="button">Convert</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

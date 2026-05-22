@@ -1,0 +1,289 @@
+{
+  "title": "3.28.0e Patch Notes",
+  "version": "3.28.0e",
+  "date": "Mar 26, 2026, 5:30:20 AM",
+  "totalChanges": 36,
+  "summary": {
+    "buffs": 1,
+    "nerfs": 6,
+    "fixes": 18,
+    "new": 2,
+    "reworks": 0,
+    "neutral": 9
+  },
+  "sections": [
+    {
+      "id": "section-0",
+      "name": "The Mirage Challenge League",
+      "changes": [
+        {
+          "text": "Some buff effects now transition with you through combat areas like temporary minions. These include Rage, Fortify, most charges, and Shrines (excluding Evolving Shrine).",
+          "type": "buff",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "On first moving after entering a Mirage, a powerful shockwave will trigger to stun enemies near the player. This is to mitigate situations where the player is immediately swarmed on entering a Mirage.",
+          "type": "neutral",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Corrected the error message that displays when trying to use the Divine Font on an Imbued Gem.",
+          "type": "neutral",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Fixed a bug with several wishes that added extra monster packs to the Mirage, where the added packs could be spawned outside the Mirage zone and therefore not appear.",
+          "type": "fix",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Mirages will no longer spawn in a particular City Square room that made them unable to spread very far.",
+          "type": "nerf",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "The Astral-touched modifier now has special font colouring",
+          "type": "neutral",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        }
+      ],
+      "subsections": []
+    },
+    {
+      "id": "section-1",
+      "name": "General Improvements",
+      "changes": [
+        {
+          "text": "Unique Maps will no longer show the \"Bonus Objective\" line when viewing the advanced mod descriptions.",
+          "type": "nerf",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Fixed a UI bug where some Atlas nodes in the far corners of the Atlas were not hoverable when the corresponding Voidstone had been unlocked.",
+          "type": "fix",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Added more informative error messages when applying Memory Threads to invalid nodes on your Atlas.",
+          "type": "new",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "While viewing the Atlas, hovering or holding a Map item in your inventory will cause Atlas nodes to glow if that node hasn't had it's Bonus Completed and the map item can award Bonus Completion. e.g. Hovering a Magic Tier 7 map item will only cause Tier 5 and under map nodes to glow because Tier 6 & 7 map nodes require Rare maps for bonus completion.",
+          "type": "neutral",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "The Map Device will no longer show the Maven/Eater/Exarch influence buttons for Unique maps that can't be Witnessed.",
+          "type": "nerf",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "All uncompleted Unique maps on the Atlas will stop pulsing blue once you have completed any 10 Unique maps.",
+          "type": "neutral",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Kirac's Invitation UI will no longer show the Maven/Eater/Exarch influence buttons.",
+          "type": "nerf",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "While using Chaos Orbs, you can now hold Alt to swap to using an Exalted Orb.",
+          "type": "neutral",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Added extra reminder text to the Transfusion Support to state that it prioritises the closest Minion that isn't already at maximum Souls.",
+          "type": "new",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Add some extra space around unstable and sky fortress breaches near the edge of a mirage",
+          "type": "neutral",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Breach monsters can no longer Fracture on death, or can have their Rarity upgraded when you have an Evolving Shrine. Breach monsters that were spawned via these effects were invisible and invulnerable to damage.",
+          "type": "nerf",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Fixed a bug where items with the +2 to level of Socketed Minion Gems Modifier on Gloves and Boots were not dropping identified in Delve.",
+          "type": "fix",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "The Ritualist's Breach Ring microtransaction now causes Unstable Breaches you find to be visually transformed into occult summoning circles.",
+          "type": "neutral",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        }
+      ],
+      "subsections": []
+    },
+    {
+      "id": "section-2",
+      "name": "Bug Fixes",
+      "changes": [
+        {
+          "text": "Harvest Bosses will transition back into their regular forms 40 seconds after starting a vine phase.",
+          "type": "neutral",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "The Misty Reflection skill from the Delirious Bloodline can no longer be repeated. Fixes a bug where if the skill repeated your character would be invisible and unusable for the rest of that area.",
+          "type": "nerf",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Fixed a bug where you couldn't get Remembrance charges for Legacy of the Rose staff after entering a boss room.",
+          "type": "fix",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Fixed a bug where the last shard fired by Eye of Winter of Transience was in the wrong location",
+          "type": "fix",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Fixed a bug where magic monsters around bismuth ore could have duplicate monster mods",
+          "type": "fix",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Fixed a bug where the Influencing Scarab of Interference couldn't be used alongside the Horned Scarab of Awakening.",
+          "type": "fix",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Fixed a bug where the Shaper time stop during the Nightmare of Lycia boss in the Sanctuary Map could prevent the Nightmare of Lycia from transitioning to her Storm Call phase, rendering the fight incompletable.",
+          "type": "fix",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Fixed a bug where the Incarnation of Dread could rarely leave an invisible donut area of Fire damage over time after the Incarnation of Dread had died.",
+          "type": "fix",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Fixed a bug where the Incarnation of Dread in the Feared Maven Invitation would continue to spawn areas of Chilled Ground after dying.",
+          "type": "fix",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Fixed a bug where Serpent Warrior Spectres were not using skills when Defensive.",
+          "type": "fix",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Fixed an issue where vaal impurities did not apply their buff to you.",
+          "type": "fix",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Fixed the Harvest Craft for +0.1 metres to Weapon Range per 10% Quality having an incorrect description at the Horticrafting Station.",
+          "type": "fix",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Fixed a display bug where Corrupted Maps were not displaying \"Area is Corrupted\"",
+          "type": "fix",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Fixed a bug introduced in 3.28, where the array of beams from the mirror in the Nightmare of Uhtred fight no longer had a medium-sized gap in the middle of the array.",
+          "type": "fix",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Fixed a bug where players could not toggle Eldritch influence when interacting with Eagon's Map Device when using a controller.",
+          "type": "fix",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Fixed a client crash on macOS.",
+          "type": "fix",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        },
+        {
+          "text": "Fixed 2 client crashes.",
+          "type": "fix",
+          "oldValue": null,
+          "newValue": null,
+          "changeDirection": null
+        }
+      ],
+      "subsections": []
+    }
+  ]
+}
